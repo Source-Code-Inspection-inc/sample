@@ -33,7 +33,15 @@ begin
 
   Format('%s (class %d) got %.*f percent on the test.', ['Bob', 74.599]);
 
-  Writeln(DateToStr(Now));
+  try
+    Writeln(DateToStr(Now));
+  except
+    on E: Exception do begin
+      Writeln(E.Message);
+      raise E;
+    end;
+  end;
+
 end;
 
 end.
